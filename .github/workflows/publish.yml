@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+    # publish documentation to github pages
+    publish-docs:
+      name: Publish Docs
+      timeout-minutes: 10
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+        - name: Set up Python 3.11
+          uses: actions/setup-python@v5
+          with:
+            python-version: 3.11
+            cache: "pip"
+        - name: Install python dev dependencies
+          run: |
+            python -m pip install --upgrade pip
+            python -m pip install -e ".[docs]"
+        - name: Build API reference pages
+          run: |
+            python -m quartodoc build
+        - name: Set up quarto
+          uses: quarto-dev/quarto-actions/setup@v2
+        - name: Render and Publish
+          uses: quarto-dev/quarto-actions/publish@v2
+          with:
+            target: gh-pages
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
