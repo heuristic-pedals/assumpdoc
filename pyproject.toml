@@ -18,6 +18,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.urls]
+Documentation = "https://heuristic-pedals.github.io/assumpdoc/"
 Repository = "https://github.com/heuristic-pedals/assumpdoc"
 "Bug tracker" = "https://github.com/heuristic-pedals/assumpdoc/issues"
 "Change log" = "https://github.com/heuristic-pedals/assumpdoc/blob/main/CHANGELOG.md"
