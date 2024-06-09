@@ -72,3 +72,6 @@ convention = "numpy"
 
 [tool.coverage.run]
 source = ["./src"]
+
+[tool.pytest.ini_options]
+testpaths = ["./tests"]
