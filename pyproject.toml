@@ -69,3 +69,6 @@ convention = "numpy"
 "tests/*" = [
     "S101", # asserts allowed in tests
 ]
+
+[tool.coverage.run]
+source = ["./src"]
