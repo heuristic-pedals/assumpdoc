@@ -27,7 +27,8 @@ test = [
     "pytest >= 8.2.2, < 9",
     "pytest-randomly >= 3.15.0, < 4",
     "pytest-sugar >= 1.0.0, < 2",
-    "hypothesis >= 6.103.1, < 7"
+    "hypothesis >= 6.103.1, < 7",
+    "coverage >=7.5.3, < 8",
 ]
 docs = [
     "quartodoc >= 0.7.3, < 1"
