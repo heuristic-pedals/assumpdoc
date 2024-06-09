@@ -1,0 +1,64 @@
+project:
+  type: website
+  render:
+    - "index.qmd"
+    - "docs/"
+    - "!notebooks/"
+    - "!docs/source/"
+    - "!docs/build/"
+    - "!*.ipynb"
+    - "!docs/gtfs/*"
+  preview:
+    port: 1111
+    browser: true
+    watch-inputs: true
+    navigate: true
+  resources:
+    - "docs/_static/**"
+
+website:
+  title: "**assumpdoc**"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: docs/reference/index.qmd
+        text: API Reference
+    right:
+      - icon: github
+        menu:
+          - text: Source code
+            url: https://github.com/heuristic-pedals/assumpdoc
+          - text: Open an issue
+            url: https://github.com/heuristic-pedals/assumpdoc/issues
+  sidebar:
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - section: API Reference
+        href: docs/reference/index.qmd
+        contents:
+          - auto: "docs/reference/*.qmd"
+  page-footer: >
+    These docs are built using [Quarto](https://quarto.org/),
+    [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html)
+    , and [Diátaxis](https://diataxis.fr/).
+
+format:
+  html:
+    css: docs/_static/styles.css
+    mainfont: Arial
+    theme:
+      - flatly
+    lang: en-GB
+
+metadata-files:
+  - docs/_sidebar.yml
+
+quartodoc:
+  dir: docs/reference
+  sections:
+  - title: assumpdoc
+    desc: Easily add assumptions and caveats to documentation.
+  package: assumpdoc

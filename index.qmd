@@ -1,0 +1,13 @@
+---
+title: "`assumpdoc` documentation"
+toc: false
+sidebar: false
+about:
+    template: marquee
+    links:
+        - icon: github
+          href: https://github.com/heuristic-pedals/assumpdoc
+          text: GitHub
+---
+
+🚧 Page is under construction. Come back soon! 🚧
