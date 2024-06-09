@@ -2,6 +2,10 @@ name: CI
 
 on: [push, pull_request]
 
+env:
+  DEFAULT_OS: ubuntu-latest
+  DEFAULT_PYTHON_VERSION: "3.11"
+
 jobs:
 
   build:
@@ -54,15 +58,15 @@ jobs:
           python -m pytest
       - name: Run tests and coverage
         if: |
-          matrix.python-version == '3.11' &&
-          matrix.os == 'ubuntu-latest'
+          matrix.python-version == ${{ env.DEFAULT_PYTHON_VERSION }} &&
+          matrix.os == ${{ env.DEFAULT_OS }}
         run: |
           coverage run -m pytest
           coverage xml
       - name: Upload coverage reports to Codecov
         if: |
-          matrix.python-version == '3.11' &&
-          matrix.os == 'ubuntu-latest'
+          matrix.python-version == ${{ env.DEFAULT_PYTHON_VERSION }} &&
+          matrix.os == ${{ env.DEFAULT_OS }}
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage.xml
@@ -73,18 +77,14 @@ jobs:
   pre-commit:
     name: Pre-commit
     timeout-minutes: 10
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.11"]
+    runs-on: ${{ env.DEFAULT_OS }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ env.DEFAULT_PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
           cache: "pip"
       - name: Install python dev dependencies
         run: |
