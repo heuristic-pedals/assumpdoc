@@ -163,3 +163,10 @@ cython_debug/
 
 # ruff
 .ruff_cache/
+
+# documentation
+/.quarto/
+_site/
+objects.json
+docs/*
+!docs/_static
